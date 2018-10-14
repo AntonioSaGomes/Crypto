@@ -5,14 +5,10 @@
  */
 package com.example.Criptocurrency.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  *
@@ -20,19 +16,59 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  */
 @Entity
 @Table(name = "coin_data")
-@EntityListeners(AuditingEntityListener.class)
 public class Coin_Data {
+        
+    @EmbeddedId
+    private Coin_Data_PKey PKey;
+    
+    @NotBlank
+    private double price;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((PKey == null) ? 0 : PKey.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Coin_Data other = (Coin_Data) obj;
+		if (PKey == null) {
+			if (other.PKey != null)
+				return false;
+		} else if (!PKey.equals(other.PKey))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		return true;
+	}
+
+	public Coin_Data_PKey getPKey() {
+		return PKey;
+	}
+
+	public void setPKey(Coin_Data_PKey pKey) {
+		PKey = pKey;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
     
     
-    
-    
-     @Id
-    private Long timestamp;
-     
-    @OneToOne
-    @JoinColumn(name="id_coin")
-    private Coin coin;
-    
-     @NotBlank
-     private double price;
 }
