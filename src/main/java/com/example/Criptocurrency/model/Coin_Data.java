@@ -5,6 +5,8 @@
  */
 package com.example.Criptocurrency.model;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,10 +17,27 @@ import javax.validation.constraints.NotBlank;
  * @author sagomes
  */
 @Entity
-@Table(name = "coin_data")
-public class Coin_Data {
+@Table(name = "p101_crypto_coin_data")
+public class Coin_Data implements Serializable {
+	
+	
         
-    @EmbeddedId
+    public Coin_Data() {
+		super();
+	}
+
+	public Coin_Data(Coin_Data_PKey pKey, @NotBlank double price) {
+		super();
+		PKey = pKey;
+		this.price = price;
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@EmbeddedId
     private Coin_Data_PKey PKey;
     
     @NotBlank
@@ -29,11 +48,10 @@ public class Coin_Data {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((PKey == null) ? 0 : PKey.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(price);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
+	
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -48,8 +66,6 @@ public class Coin_Data {
 			if (other.PKey != null)
 				return false;
 		} else if (!PKey.equals(other.PKey))
-			return false;
-		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		return true;
 	}

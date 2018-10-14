@@ -21,10 +21,24 @@ import javax.validation.constraints.NotBlank;
  */
 
 @Entity
-@Table(name = "coin_wallet")
-
+@Table(name = "p101_crypto_coin_wallet")
 public class Coin_wallet implements Serializable {
 	
+	public Coin_wallet() {
+		super();
+	}
+
+	public Coin_wallet(Coin_wallet_PKey id, Wallet wallet, Coin coin, @NotBlank double quantity, double top_limit,
+			double bottom_limit) {
+		super();
+		this.id = id;
+		this.wallet = wallet;
+		this.coin = coin;
+		this.quantity = quantity;
+		this.top_limit = top_limit;
+		this.bottom_limit = bottom_limit;
+	}
+
 	/**
 	 * 
 	 */
@@ -42,30 +56,40 @@ public class Coin_wallet implements Serializable {
     
     @ManyToOne
     @MapsId("coin_id")
-    @JoinColumn (name = "id_coin")
+    @JoinColumn (name = "idCoin")
     private Coin coin;
     
     
     @NotBlank
     private double quantity;
     
-    @NotBlank
-    private double price;
+    private double top_limit;
+    
+    private double bottom_limit;
 
     
   
-    @Override
+    public double getTop_limit() {
+		return top_limit;
+	}
+
+	public void setTop_limit(double top_limit) {
+		this.top_limit = top_limit;
+	}
+
+	public double getBottom_limit() {
+		return bottom_limit;
+	}
+
+	public void setBottom_limit(double bottom_limit) {
+		this.bottom_limit = bottom_limit;
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((coin == null) ? 0 : coin.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(price);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(quantity);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((wallet == null) ? 0 : wallet.hashCode());
 		return result;
 	}
 
@@ -78,24 +102,10 @@ public class Coin_wallet implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Coin_wallet other = (Coin_wallet) obj;
-		if (coin == null) {
-			if (other.coin != null)
-				return false;
-		} else if (!coin.equals(other.coin))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
-			return false;
-		if (Double.doubleToLongBits(quantity) != Double.doubleToLongBits(other.quantity))
-			return false;
-		if (wallet == null) {
-			if (other.wallet != null)
-				return false;
-		} else if (!wallet.equals(other.wallet))
 			return false;
 		return true;
 	}
@@ -122,14 +132,6 @@ public class Coin_wallet implements Serializable {
 
 	public void setCoin(Coin coin) {
 		this.coin = coin;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 	/**

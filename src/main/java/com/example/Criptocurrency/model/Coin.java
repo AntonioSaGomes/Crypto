@@ -6,6 +6,7 @@
 package com.example.Criptocurrency.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,11 +22,29 @@ import javax.validation.constraints.NotBlank;
  * @author sagomes
  */
 @Entity
-@Table(name = "coin")
-
+@Table(name = "p101_crypto_coin")
 public class Coin implements Serializable {
+	
+	
     
-    /**
+    public Coin() {
+		super();
+	}
+
+	public Coin(Long id_coin, @NotBlank String name, @NotBlank String shortname, @NotBlank String logo,
+			@NotBlank double percentage_change_1h, @NotBlank double percentage_change_24h,
+			@NotBlank double percentage_change_7d) {
+		super();
+		this.id_coin = id_coin;
+		this.name = name;
+		this.shortname = shortname;
+		this.logo = logo;
+		this.percentage_change_1h = percentage_change_1h;
+		this.percentage_change_24h = percentage_change_24h;
+		this.percentage_change_7d = percentage_change_7d;
+	}
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -35,10 +54,10 @@ public class Coin implements Serializable {
     private Long id_coin;
 	
 	@OneToMany(mappedBy="coin")
-	private List<Coin_wallet> coin_wallet;
+	private List<Coin_wallet> coin_wallet = new ArrayList<>();
 	
-	@OneToMany(mappedBy="coin")
-	private List<Coin_Data> coin_data;
+	@OneToMany(mappedBy="PKey.coin")
+	private List<Coin_Data> coin_data = new ArrayList<>();
     
     @NotBlank
     private String name;
@@ -169,19 +188,7 @@ public class Coin implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((coin_data == null) ? 0 : coin_data.hashCode());
-		result = prime * result + ((coin_wallet == null) ? 0 : coin_wallet.hashCode());
 		result = prime * result + ((id_coin == null) ? 0 : id_coin.hashCode());
-		result = prime * result + ((logo == null) ? 0 : logo.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(percentage_change_1h);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(percentage_change_24h);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(percentage_change_7d);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((shortname == null) ? 0 : shortname.hashCode());
 		return result;
 	}
 
@@ -194,44 +201,15 @@ public class Coin implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Coin other = (Coin) obj;
-		if (coin_data == null) {
-			if (other.coin_data != null)
-				return false;
-		} else if (!coin_data.equals(other.coin_data))
-			return false;
-		if (coin_wallet == null) {
-			if (other.coin_wallet != null)
-				return false;
-		} else if (!coin_wallet.equals(other.coin_wallet))
-			return false;
 		if (id_coin == null) {
 			if (other.id_coin != null)
 				return false;
 		} else if (!id_coin.equals(other.id_coin))
 			return false;
-		if (logo == null) {
-			if (other.logo != null)
-				return false;
-		} else if (!logo.equals(other.logo))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (Double.doubleToLongBits(percentage_change_1h) != Double.doubleToLongBits(other.percentage_change_1h))
-			return false;
-		if (Double.doubleToLongBits(percentage_change_24h) != Double.doubleToLongBits(other.percentage_change_24h))
-			return false;
-		if (Double.doubleToLongBits(percentage_change_7d) != Double.doubleToLongBits(other.percentage_change_7d))
-			return false;
-		if (shortname == null) {
-			if (other.shortname != null)
-				return false;
-		} else if (!shortname.equals(other.shortname))
-			return false;
 		return true;
 	}
+
+	
     
     
    

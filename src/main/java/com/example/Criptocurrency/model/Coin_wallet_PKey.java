@@ -7,6 +7,16 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Coin_wallet_PKey implements Serializable {
 	
+	public Coin_wallet_PKey() {
+		super();
+	}
+
+	public Coin_wallet_PKey(Long coin_id, Long wallet_id) {
+		super();
+		this.coin_id = coin_id;
+		this.wallet_id = wallet_id;
+	}
+
 	/**
 	 * 
 	 */

@@ -9,6 +9,16 @@ import javax.persistence.ManyToOne;
 
 @Embeddable
 public class Coin_Data_PKey implements Serializable {
+	
+	public Coin_Data_PKey() {
+		super();
+	}
+
+	public Coin_Data_PKey(Coin coin, String timestamp) {
+		super();
+		this.coin = coin;
+		this.timestamp = timestamp;
+	}
 
 	/**
 	 * 
