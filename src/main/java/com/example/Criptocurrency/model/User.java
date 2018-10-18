@@ -26,7 +26,7 @@ public class User implements Serializable {
     public User() {
 		super();
 	}
-
+    
 	public User(Long id, @NotBlank String name, @NotBlank String email, @NotBlank String password, Wallet wallet) {
 		super();
 		this.id = id;

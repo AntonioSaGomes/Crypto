@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -28,7 +29,7 @@ public class Coin_wallet implements Serializable {
 		super();
 	}
 
-	public Coin_wallet(Coin_wallet_PKey id, Wallet wallet, Coin coin, @NotBlank double quantity, double top_limit,
+	public Coin_wallet(Coin_wallet_PKey id, Wallet wallet, Coin coin, @NotNull double quantity, double top_limit,
 			double bottom_limit) {
 		super();
 		this.id = id;
@@ -60,7 +61,7 @@ public class Coin_wallet implements Serializable {
     private Coin coin;
     
     
-    @NotBlank
+    @NotNull
     private double quantity;
     
     private double top_limit;

@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -32,8 +33,8 @@ public class Coin implements Serializable {
 	}
 
 	public Coin(Long id_coin, @NotBlank String name, @NotBlank String shortname, @NotBlank String logo,
-			@NotBlank double percentage_change_1h, @NotBlank double percentage_change_24h,
-			@NotBlank double percentage_change_7d) {
+			@NotNull double percentage_change_1h, @NotNull double percentage_change_24h,
+			@NotNull double percentage_change_7d) {
 		super();
 		this.id_coin = id_coin;
 		this.name = name;
@@ -68,13 +69,13 @@ public class Coin implements Serializable {
     @NotBlank
     private String logo;
     
-    @NotBlank
+    @NotNull
     private double percentage_change_1h;
     
-    @NotBlank
+    @NotNull
     private double percentage_change_24h;
      
-    @NotBlank
+    @NotNull
     private double percentage_change_7d;
     
     
@@ -210,7 +211,9 @@ public class Coin implements Serializable {
 	}
 
 	
-    
+    public String toString(){
+        return this.name;
+    }
     
    
 }
