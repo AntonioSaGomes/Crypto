@@ -5,6 +5,7 @@
  */
 package com.example.Criptocurrency.controller;
 
+import com.example.Criptocurrency.exception.ResourceNotFoundException;
 import com.example.Criptocurrency.model.User;
 import com.example.Criptocurrency.model.Wallet;
 import com.example.Criptocurrency.repositories.UserRepo;
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class UserController {
+   
     @Autowired
     private UserRepo userRepo;
     @GetMapping("/users")
@@ -33,7 +36,8 @@ public class UserController {
     }
    
     @PostMapping("/user")
-    public void createWallet(@Valid @RequestBody User user){
+    public void createUser(@Valid @RequestBody User user){
         userRepo.save(user);
     }
+    
 }
