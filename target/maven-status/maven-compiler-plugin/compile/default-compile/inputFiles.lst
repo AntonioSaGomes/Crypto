@@ -8,12 +8,15 @@
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/exception/ResourceNotFoundException.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/controller/CoinDataController.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/model/Coin_Data.java
+/home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/controller/MessageController.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/controller/CoinController.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/repositories/WalletRepo.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/model/Coin.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/controller/CoinWalletController.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/repositories/CoinRepo.java
+/home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/model/Message.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/controller/UserController.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/CriptocurrencyApplication.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/model/Coin_wallet.java
+/home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/repositories/MessageRepo.java
 /home/sagomes/Desktop/IES/Criptocurrency/src/main/java/com/example/Criptocurrency/model/Coin_wallet_PKey.java

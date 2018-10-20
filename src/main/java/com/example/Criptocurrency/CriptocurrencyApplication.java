@@ -15,9 +15,11 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class CriptocurrencyApplication {
 
 	public static void main(String[] args) {

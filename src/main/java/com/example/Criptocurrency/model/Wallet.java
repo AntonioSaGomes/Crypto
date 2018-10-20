@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "p101_crypto_wallet")
@@ -29,8 +30,8 @@ public class Wallet implements Serializable {
 		super();
 	}
 
-	public Wallet(Long id, @NotBlank User user, @NotBlank double value, @NotBlank double percentage_change_1h,
-			@NotBlank double percentage_change_24h, @NotBlank double percentage_change_7d, double top_limit,
+	public Wallet(Long id, @NotNull User user, @NotNull double value, @NotNull double percentage_change_1h,
+			@NotNull double percentage_change_24h, @NotNull double percentage_change_7d, double top_limit,
 			double bottom_limit) {
 		super();
 		this.id = id;
@@ -53,23 +54,23 @@ public class Wallet implements Serializable {
     private Long id;
 	
 	@OneToOne
-	@NotBlank
+	@NotNull
 	@JoinColumn(name="idUser")
 	private User user;
 	
 	@OneToMany(mappedBy="wallet")
 	private List<Coin_wallet> coin_wallet = new ArrayList<>();
 	
-	@NotBlank
+	@NotNull
     private double value;
     
-    @NotBlank
+    @NotNull
     private double percentage_change_1h;
     
-    @NotBlank
+    @NotNull
     private double percentage_change_24h;
      
-    @NotBlank
+    @NotNull
     private double percentage_change_7d;
     
     private double top_limit;
