@@ -42,23 +42,7 @@ public class CoinWalletController {
         coinWalletRepo.save(coin_wallet);
     }
     
-    @PutMapping("/coinWalletTopLimit")
-    public void updateTopLimit(@PathVariable(value = "id")Coin_wallet_PKey pkey,@Valid @RequestBody Coin_wallet updatedCoinWallet){
-        Coin_wallet coin_wallet = coinWalletRepo.findById(pkey)
-                .orElseThrow(() -> new ResourceNotFoundException("coin_Wallet", "id", pkey));  
-    
-        coin_wallet.setTop_limit(updatedCoinWallet.getTop_limit());
-        coinWalletRepo.save(coin_wallet);
-    }
-    
-    @PutMapping("/coinWalletTopLimit")
-    public void updateBottomLimit(@PathVariable(value = "id")Coin_wallet_PKey pkey,@Valid @RequestBody Coin_wallet updatedCoinWallet){
-        Coin_wallet coin_wallet = coinWalletRepo.findById(pkey)
-                .orElseThrow(() -> new ResourceNotFoundException("coin_Wallet", "id", pkey));
-    
-        coin_wallet.setBottom_limit(updatedCoinWallet.getBottom_limit());
-    
-    }
+
     
     
     
