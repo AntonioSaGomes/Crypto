@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.Criptocurrency.controller;
+package com.example.Criptocurrency.api;
 
-import com.example.Criptocurrency.model.Message;
-import com.example.Criptocurrency.repositories.MessageRepo;
+import com.example.Criptocurrency.model.User;
+import com.example.Criptocurrency.model.Wallet;
+import com.example.Criptocurrency.repositories.UserRepo;
+import com.example.Criptocurrency.repositories.WalletRepo;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,26 +17,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-/**
+ /**
  *
  * @author sagomes
  */
-
 @RestController
 @RequestMapping("/api")
-public class MessageController {
-    
-     @Autowired
-     private MessageRepo messageRepo;
-    
-     @GetMapping("/messages")
-     public List<Message> getMessages(){
-         return messageRepo.findAll();
-     }
+public class UserApi {
+    @Autowired
+    private UserRepo userRepo;
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
+    }
    
-     @PostMapping("/message")
-     public void createMessage(@Valid @RequestBody Message message){
-        messageRepo.save(message);
-     }
+ 
 }

@@ -1,6 +1,5 @@
 package com.example.Criptocurrency.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -24,13 +23,13 @@ public class Warning implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@JsonBackReference(value = "userWarning")
+	@JsonManagedReference(value = "userWarning")
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name="id_user")
 	private User user;
 	
-	@JsonBackReference(value = "walletWarning")
+	@JsonManagedReference(value = "walletWarning")
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name="id_wallet")

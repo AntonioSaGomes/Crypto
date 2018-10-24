@@ -17,7 +17,6 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="Warning_Type")
@@ -32,13 +31,13 @@ public class Warning_Type implements Serializable {
 	@NotNull
 	private String description;
 	
-	@JsonManagedReference(value="coinWarningWarningType")
+	@JsonBackReference(value="coinWarningWarningType")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="warning_type")
 	@Transient
 	private List<Coin_Warning> coin_warnings = new ArrayList<>();
 	
-	@JsonManagedReference(value = "walletWarningWarningType")
+	@JsonBackReference(value = "walletWarningWarningType")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="warning_type")
 	@Transient

@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Form</h1>
-    <form action="#" th:action="@{/api/user}" th:object="${user}" method="post">
+	<h1>User Form</h1>
+    <form action="#" th:action="@{user}" th:object="${user}" method="post">
     	<p>Id: <input type="text" th:field="*{id}" /></p>
         <p>Name: <input type="text" th:field="*{name}" /></p>
         <p>Email: <input type="text" th:field="*{email}" /></p>

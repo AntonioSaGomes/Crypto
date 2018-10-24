@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Wallet_Warning")
@@ -25,7 +25,7 @@ public class Wallet_Warning implements Serializable {
 	@Transient
 	private Warning warning;
 	
-	@JsonBackReference(value = "walletWarningWarningType")
+	@JsonManagedReference(value = "walletWarningWarningType")
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name="warning_type")

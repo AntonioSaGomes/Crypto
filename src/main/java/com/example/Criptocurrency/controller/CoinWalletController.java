@@ -6,8 +6,7 @@
 package com.example.Criptocurrency.controller;
 
 import com.example.Criptocurrency.exception.ResourceNotFoundException;
-import com.example.Criptocurrency.model.Coin_wallet;
-import com.example.Criptocurrency.model.Coin_wallet_PKey;
+import com.example.Criptocurrency.model.Coin_Wallet;
 import com.example.Criptocurrency.model.User;
 import com.example.Criptocurrency.repositories.CoinWalletRepo;
 import com.example.Criptocurrency.repositories.UserRepo;
@@ -33,12 +32,12 @@ public class CoinWalletController {
     private CoinWalletRepo coinWalletRepo;
     
     @GetMapping("/coinsWallet")
-    public List<Coin_wallet> getAllCoinsWallet() {
+    public List<Coin_Wallet> getAllCoinsWallet() {
         return coinWalletRepo.findAll();
     }
    
     @PostMapping("/coinWallet")
-    public void createWallet(@Valid @RequestBody Coin_wallet coin_wallet){
+    public void createWallet(@Valid @RequestBody Coin_Wallet coin_wallet){
         coinWalletRepo.save(coin_wallet);
     }
     

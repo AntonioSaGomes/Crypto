@@ -5,22 +5,23 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Coin_Data_PKey implements Serializable {
-	
+public class Coin_Wallet_PKey implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id_coin;
-	private String timestamp;
+	private Long id_wallet;
 	
 	
-	public Coin_Data_PKey() {
+	
+	public Coin_Wallet_PKey() {
 		super();
 	}
 
-	public Coin_Data_PKey(Long id_coin, String timestamp) {
+	public Coin_Wallet_PKey(Long id_coin, Long id_wallet) {
 		super();
 		this.id_coin = id_coin;
-		this.timestamp = timestamp;
+		this.id_wallet = id_wallet;
 	}
 	
 	public Long getId_coin() {
@@ -29,18 +30,18 @@ public class Coin_Data_PKey implements Serializable {
 	public void setId_coin(Long id_coin) {
 		this.id_coin = id_coin;
 	}
-	public String getTimestamp() {
-		return timestamp;
+	public Long getId_wallet() {
+		return id_wallet;
 	}
-	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
+	public void setId_wallet(Long id_wallet) {
+		this.id_wallet = id_wallet;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id_coin == null) ? 0 : id_coin.hashCode());
-		result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+		result = prime * result + ((id_wallet == null) ? 0 : id_wallet.hashCode());
 		return result;
 	}
 	@Override
@@ -51,18 +52,19 @@ public class Coin_Data_PKey implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Coin_Data_PKey other = (Coin_Data_PKey) obj;
+		Coin_Wallet_PKey other = (Coin_Wallet_PKey) obj;
 		if (id_coin == null) {
 			if (other.id_coin != null)
 				return false;
 		} else if (!id_coin.equals(other.id_coin))
 			return false;
-		if (timestamp == null) {
-			if (other.timestamp != null)
+		if (id_wallet == null) {
+			if (other.id_wallet != null)
 				return false;
-		} else if (!timestamp.equals(other.timestamp))
+		} else if (!id_wallet.equals(other.id_wallet))
 			return false;
 		return true;
 	}
+
 	
 }

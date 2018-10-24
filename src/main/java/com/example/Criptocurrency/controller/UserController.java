@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author sagomes
  */
+
 @Controller
-@RequestMapping("/api")
 public class UserController {
    
     @Autowired
@@ -44,7 +44,10 @@ public class UserController {
    
     @PostMapping("/user")
     public String submitForm(@ModelAttribute User user){
+        User user1 = userRepo.save(user);
         return "result";
     }
+    
+
     
 }
